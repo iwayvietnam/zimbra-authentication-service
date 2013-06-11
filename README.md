@@ -1,7 +1,7 @@
 zimbra-authentication-service
 =============================
 
-# Zimbra Authentication Service (ZAS)
+# Zimbra Authentication Service (ZAuth)
 
 ## Introduction
   
@@ -10,7 +10,7 @@ Mục tiêu của project là cung cấp dịch vụ xác thực giữa Zimbra v
 ## Use case:
   1. Khởi tạo:
      
-     Khi người quản trị của công ty sử dụng dịch vụ AMIS khai báo các thông tin, nếu chọn sử dụng dịch vụ email, hệ thống sẽ tự tạo các email tương ứng với người dùng của công ty đó.
+     Khi người quản trị của công ty sử dụng dịch vụ AMIS khai báo các thông tin, nếu chọn sử dụng dịch vụ email, hệ thống ZaaS (Zimbra as a Service - https://github.com/iwayvietnam/zimbra-multi-tenancy) sẽ cho phép khởi tạo domain mới, đăng ký tài khoản domain-admin để người quản trị của công ty quản trị các email của người dùng trong công ty đó.
 
   2. Người dùng sử dụng dịch vụ lần đầu:
      
@@ -20,9 +20,11 @@ Mục tiêu của project là cung cấp dịch vụ xác thực giữa Zimbra v
   3. Người dùng sử dụng dịch vụ từ lần thứ 2:
      
      Người dùng đã đăng nhập vào AMIS, khi chuyển qua phần email sẽ không bị hỏi thông tin đăng nhập.
-     AMIS, thông qua ZAS,  sẽ gửi một số thông tin cho Zimbra để xác thực người dùng.
+     AMIS, thông qua ZAuth, sẽ gửi một số thông tin cho Zimbra để xác thực người dùng.
 
-## Các giải pháp lựa chọn:
-  1. OpenID
-  2. Persona
-  3. Custom 1 cái riêng có cơ chế sử dụng token key giống Google,...
+## Giải pháp lựa chọn:
+  1. Persona
+
+## Một số giải pháp khác (và lý do không được lựa chọn):
+  1. OpenID: yêu cầu các hệ thống ngoài (như AMIS) muốn tích hợp vào phải sửa nhiều code, gây phức tạp hóa vấn đề không cần thiết
+  2. Custom 1 cái riêng có cơ chế sử dụng token key giống Google, FB...: implement phức tạp
