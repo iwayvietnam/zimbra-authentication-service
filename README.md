@@ -10,7 +10,7 @@ Mục tiêu của project là cung cấp dịch vụ xác thực giữa Zimbra v
 ## Use case:
   1. Khởi tạo:
      
-     Khi người quản trị của công ty sử dụng dịch vụ AMIS khai báo các thông tin, nếu chọn sử dụng dịch vụ email, hệ thống ZaaS (Zimbra as a Service - https://github.com/iwayvietnam/zimbra-multi-tenancy) sẽ cho phép khởi tạo domain mới, đăng ký tài khoản domain-admin để người quản trị của công ty quản trị các email của người dùng trong công ty đó.
+     Khi người quản trị của công ty sử dụng dịch vụ AMIS khai báo các thông tin, nếu chọn sử dụng dịch vụ email, hệ thống ZaaS (Zimbra as a Service - [https://github.com/iwayvietnam/zimbra-multi-tenancy](https://github.com/iwayvietnam/zimbra-multi-tenancy)) sẽ cho phép khởi tạo domain mới, đăng ký tài khoản domain-admin để người quản trị của công ty quản trị các email của người dùng trong công ty đó.
 
   2. Người dùng sử dụng dịch vụ lần đầu:
      
@@ -24,6 +24,8 @@ Mục tiêu của project là cung cấp dịch vụ xác thực giữa Zimbra v
 
 ## Giải pháp lựa chọn:
   1. Persona
+     * Demo hệ thống ngoài (vai trò như của AMIS): [https://eyedee.me](https://eyedee.me)
+     * Demo (vai trò như của Zimbra): [http://123done.org](http://123done.org)
 
 ## Một số giải pháp khác (và lý do không được lựa chọn):
   1. OpenID: yêu cầu các hệ thống ngoài (như AMIS) muốn tích hợp vào phải sửa nhiều code, gây phức tạp hóa vấn đề không cần thiết
