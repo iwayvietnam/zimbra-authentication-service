@@ -10,7 +10,7 @@ function generateCert(email, pubkey, certDuration, callback) {
   // Call to backend to generate cert
 
   $.ajax({
-    url: 'http://localhost:8080/cert_key',
+    url: 'http://127.0.0.1:10000/cert_key',
     data : {
       pubkey: pubKey,
       duration: certDuration
