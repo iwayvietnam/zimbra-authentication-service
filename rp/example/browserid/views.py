@@ -9,13 +9,13 @@ from time import time
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 
-
+ZIMBRA_EMAIL = '@zimbra.org'
 
 def status(request):
     if not request.POST:
         return HttpResponseRedirect('/')
 
-    audience = 'http://example.com:8000'
+    audience = 'http://zimbra.org'
     assertion = request.POST['assertion']
 
     try:
@@ -53,6 +53,7 @@ def generate(data):
     try:
         #If they're not logged in, an exception will be thrown.
         acct = data['email']
+        acct = acct.split('@')[0] + ZIMBRA_EMAIL
         
         pak = hmac.new(preauth_key, '%s|name|0|%s'%(acct, timestamp), hashlib.sha1).hexdigest()
         
