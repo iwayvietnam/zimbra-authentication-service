@@ -28,8 +28,11 @@ Mục tiêu của project là cung cấp dịch vụ xác thực giữa Zimbra v
      * idp: identity provider - bên cung cấp ID của người dùng
   
   2. Dependencies:
-     * [browserid-ceritifier](): server Mozilla cung cấp, dùng để chứng nhận người dùng
-     * [browserid](): server cung cấp các thư viện cho việc dùng Mozilla Persona; thông thường dùng luôn ở [persona.org](https://login.persona.org), để test/dev/customize thì tải server này về chạy localhost
+     * [browserid-ceritifier](https://github.com/mozilla/browserid-certifier): server Mozilla cung cấp, dùng để chứng nhận người dùng
+     * [browserid](https://github.com/mozilla/browserid): server cung cấp các thư viện cho việc dùng Mozilla Persona; thông thường dùng luôn ở [persona.org](https://login.persona.org), để test/dev/customize thì tải server này về chạy localhost
+
+  3. TODO:
+
 
   Hướng dùng trong môi trường dev(local)/production sẽ có trong các file README.md của từng module.
 
