@@ -10,6 +10,9 @@ Relying Party
   * [django](http://www.djangoproject.com) 1.4
   * [Requests](http://python-requests.org)
 
+## TODO:
+  * Chuyển hướng người dùng tới Zimbra.
+
 To run this example:
 
     ./manage.py runserver
