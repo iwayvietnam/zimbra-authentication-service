@@ -19,7 +19,7 @@ def status(request):
     assertion = request.POST['assertion']
 
     try:
-        page = requests.post('https://verifier.login.persona.org/verify',
+        page = requests.post('http://localhost:10000',
                              verify=True,
                              data={ "assertion": assertion,
                                     "audience": audience})

@@ -10,6 +10,8 @@
     <p>
       {% if data.status == "okay" %}
         Logged in as: {{ data.email }}
+        <br />
+        Pre_auth: {{data.user_key}}
       {% else %}
         Error: {{ data.reason }}
       {% endif %}
