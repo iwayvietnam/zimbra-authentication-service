@@ -16,7 +16,7 @@
         // Call to backend to generate cert
         console.log(document.location);
         $.ajax({
-          url: 'http://127.0.0.1:8080/cert_key',
+          url: '/api/cert_key',
           data : {
             pubkey: pubKey,
             duration: certDuration,
