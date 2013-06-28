@@ -1,7 +1,14 @@
-# Python django example
+Relying Party
+=============================
 
-This example was written using [django](http://www.djangoproject.com)
-1.4 and [Requests](http://python-requests.org).
+## Introduction:
+
+Đây là bên chấp nhận người dùng xác thực bằng Persona; đồng thời, cho phép người dùng đăng nhập vào Zimbra thông qua Zimbra Preauth.
+
+## Requirement
+  * Python >= 2.6.x
+  * [django](http://www.djangoproject.com) 1.4
+  * [Requests](http://python-requests.org)
 
 To run this example:
 
