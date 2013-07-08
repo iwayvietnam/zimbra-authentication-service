@@ -18,6 +18,26 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/api/whoami', function(req, res) {
+  res.json({ user: req.session.user || null });
+});
+
+app.get('/api/signout', function(req, res) {
+  req.session.reset();
+  res.writeHead(200);
+  res.end();
+});
+
+app.post('/api/signin', function(req, res) {
+  // 3rd party implementation
+  // req.session.user = authenticated user
+});
+
+app.post('/api/haveuser', function(req, res) {
+  // optional
+  // 3rd party implementation
+});
+
 app.post('/api/cert_key', function (req, res) {
   var certRequest = request.post('http://localhost:8080/cert_key').form(req.body);
   certRequest.pipe(res);
