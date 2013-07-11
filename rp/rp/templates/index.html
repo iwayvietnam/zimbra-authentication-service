@@ -2,15 +2,23 @@
 {% load browserid %}
 {% load staticfiles %}
 <html>
+  <head>
+    <title>ZAuth</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/persona-buttons.css" %}" />
+    <style type="text/css">
+      .browserid_login{width:300px;}
+      .authentication a{margin-bottom:40px;}
+    </style>
+  </head>
   <body>
     {% browserid_info %}
     <header>
       <h1>My Site</h1>
       <div class="authentication">
         {% if user.is_authenticated %}
-          {% browserid_logout text='Logout' %}
+          {% browserid_logout text='Đăng xuất khỏi Zimbra' link_class='persona-button'%}
         {% else %}
-          {% browserid_login text='Login' %}
+          {% browserid_login text='Đăng nhập vào Zimbra' link_class='persona-button' %}
         {% endif %}
       </div>
     </header>
