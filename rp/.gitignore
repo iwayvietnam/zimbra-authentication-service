@@ -3,3 +3,4 @@ include/
 lib/
 local/
 zauth
+*.pyc
