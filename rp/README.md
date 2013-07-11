@@ -9,12 +9,13 @@ Relying Party
   * Python >= 2.6.x
   * [django](http://www.djangoproject.com) 1.4
   * [Requests](http://python-requests.org)
+  * [django-browserid](http://django-browserid.readthedocs.org/en/v0.8/)
 
 ## TODO:
   * Chuyển hướng người dùng tới Zimbra.
 
-To run this example:
+## Test:
 
-    ./manage.py runserver
+   Chạy lệnh: ./manage.py runserver
 
-And go to [localhost:8000](http://localhost:8000)
+   và vào [localhost:8000](http://localhost:8000)
