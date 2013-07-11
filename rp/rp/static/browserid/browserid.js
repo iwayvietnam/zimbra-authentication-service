@@ -69,7 +69,7 @@
         });
 
         if (!$browseridInfo.data('userEmail')) {
-           // $('.browserid-login').click();
+            $('.browserid-login').click();
         } else {
             window.location.href = '/status/'
         }
