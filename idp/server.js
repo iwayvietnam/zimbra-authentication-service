@@ -29,8 +29,16 @@ app.get('/api/signout', function(req, res) {
 });
 
 app.post('/api/signin', function(req, res) {
-  // 3rd party implementation
-  // req.session.user = authenticated user
+  if (!req.body.user || !req.body.pass) {
+    res.writeHead(400);
+    return res.end();
+  }
+
+  var normalizedUser = req.body.user.toLowerCase();
+  req.session.user = normalizedUser;
+
+  res.writeHead(200);
+  res.end();
 });
 
 app.post('/api/haveuser', function(req, res) {
