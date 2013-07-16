@@ -22,6 +22,12 @@ app.get('/api/whoami', function(req, res) {
   res.json({ user: req.session.user || null });
 });
 
+app.get('/api/auth_status', function(req, res) {
+  res.send(JSON.stringify({
+    logged_in_email: req.session.user || null,
+  }));
+});
+
 app.get('/api/signout', function(req, res) {
   req.session.reset();
   res.writeHead(200);
