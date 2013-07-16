@@ -137,9 +137,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django_browserid.context_processors.browserid',
 )
 
+BROWSERID_REQUEST_ARGS = {
+    'siteName': 'Zimbra Authentication Service'
+}
+
 SITE_URL = 'http://zimbra.org'
 
-BROWSERID_VERIFICATION_URL = 'http://localhost:10000'
+# BROWSERID_VERIFICATION_URL = 'http://localhost:10000'
 
 # Path to redirect to on successful login.
 LOGIN_REDIRECT_URL = '/status'
