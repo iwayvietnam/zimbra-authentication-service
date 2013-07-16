@@ -68,10 +68,8 @@
             }
         });
 
-        if (!$browseridInfo.data('userEmail')) {
-            $('.browserid-login').click();
-        } else {
-            window.location.href = '/status/'
+        if ($browseridInfo.data('userEmail')) {
+            window.location = $('.browserid-login').data('next');
         }
     });
 })(jQuery);
