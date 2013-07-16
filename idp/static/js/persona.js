@@ -1,29 +1,29 @@
-
-
 function activeSessionFor(email) {
   // In here, we ask the server if this email has an active session
   // TODO: Implementation
   return true;
 }
 
-function generateCert(email, pubkey, certDuration, callback) {
+function generateCert(email, pubKey, certDuration, callback) {
   // Call to backend to generate cert
-
   $.ajax({
-    url: 'http://127.0.0.1:10000/cert_key',
+    url: '/api/cert_key',
     data : {
       pubkey: pubKey,
-      duration: certDuration
+      duration: certDuration,
+      email: email
     },
     type: 'POST',
-    header: {'Content Type': 'application/json'},
-    dataType: 'json',
+    header: {"Content-Type": "application/json"},
     success: function (data) {
       if (data.success) {
         callback(data.certificate);
       } else {
         navigator.id.raiseProvisioningFailure('Could not certify key');
       }
+    },
+    error: function(data) {
+      navigator.id.raiseProvisioningFailure('Could not connect to certifer');
     }
   });
 }
