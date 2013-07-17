@@ -10,6 +10,17 @@ app.use(express.logger());
 
 app.use(express.bodyParser());
 
+app.use(express.cookieParser());
+
+app.use(express.cookieSession({
+  cookieName: 'auth_cookie',
+  secret: 'a super secret',
+  cookie: {
+    path: '/api/',
+    maxAge: (6 * 60 * 60 * 1000)
+  }
+}));
+
 app.use(function(req, res, next) {
   if (req.path === '/.well-known/browserid') {
     res.setHeader('Content-Type', 'application/json');
