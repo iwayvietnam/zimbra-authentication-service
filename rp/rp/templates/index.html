@@ -13,7 +13,6 @@
   <body>
     {% browserid_info %}
     <header>
-      <h1>My Site</h1>
       <div class="authentication">
         {% if user.is_authenticated %}
           {% browserid_logout text='Đăng xuất khỏi Zimbra' link_class='persona-button'%}
@@ -22,9 +21,6 @@
         {% endif %}
       </div>
     </header>
-    <article>
-      <p>Welcome to my site!</p>
-    </article>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="{% static "browserid/browserid.js" %}"></script>
     <!-- <script src="http://localhost:10002/include.js"></script> -->
