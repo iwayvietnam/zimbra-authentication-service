@@ -1,9 +1,3 @@
-function activeSessionFor(email) {
-  // In here, we ask the server if this email has an active session
-  // TODO: Implementation
-  return true;
-}
-
 function generateCert(email, pubKey, certDuration, callback) {
   // Call to backend to generate cert
   $.ajax({
@@ -30,14 +24,21 @@ function generateCert(email, pubKey, certDuration, callback) {
 
 function startProvisioning() {
   navigator.id.beginProvisioning(function(email, certDuration) {
-    if (activeSessionFor(email)) {
+    $.ajax({
+      url: '/api/whoami',
+      type: 'GET',
+    }).done(function (data) {
+      var user = email.split('@')[0].toLowerCase();
+      if (email != data.user) {
+        return navigator.id.raiseProvisioningFailure('user is not authenticated as target user');
+      }
       navigator.id.genKeyPair(function(publicKey) {
         generateCert(email, publicKey, certDuration, function (certificate) {
           navigator.id.registerCertificate(certificate);
         });
       });
-    } else {
-      navigator.id.raiseProvisioningFailure('user is not authenticated as target user');
-    }
+    }).fail(function (data) {
+      navigator.id.raiseProvisioningFailure('user is not authenticated');
+    });
   });
 }
