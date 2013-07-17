@@ -42,3 +42,35 @@ function startProvisioning() {
     });
   });
 }
+
+function startAuthenticating() {
+  navigator.id.beginAuthentication(function(email){
+    var user = email.split('@')[0].toLowerCase();
+
+    // We can check if user is in the system
+
+    $("form button.cancel").click(function(e) {
+      e.preventDefault();
+      navigator.id.raiseAuthenticationFailure("user canceled authentication");
+    });
+
+    $("form").submit(function(e) {
+      e.preventDefault();
+      var pass = $("form input[name='pass']").val();
+
+      $.ajax({
+        url: '/api/signin',
+        type: 'POST',
+        data: { user: user, pass: pass },
+        header: {"Content-Type": "application/json"},
+        success: function() {
+          navigator.id.completeAuthentication();
+        },
+        error: function() {
+          $("div.error").text("Yikes, that password looks wrong. Try again.");
+        }
+      });
+
+    });
+  });
+}
