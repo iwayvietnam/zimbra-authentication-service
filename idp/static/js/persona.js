@@ -26,10 +26,10 @@ function startProvisioning() {
   navigator.id.beginProvisioning(function(email, certDuration) {
     $.ajax({
       url: '/api/whoami',
-      type: 'GET',
+      type: 'GET'
     }).done(function (data) {
       var user = email.split('@')[0].toLowerCase();
-      if (email != data.user) {
+      if (user != data.user) {
         return navigator.id.raiseProvisioningFailure('user is not authenticated as target user');
       }
       navigator.id.genKeyPair(function(publicKey) {
