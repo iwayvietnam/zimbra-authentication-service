@@ -1,0 +1,21 @@
+upstream rp {
+  server unix:///tmp/rp.sock;
+}
+
+server {
+  listen 80;
+  server_name rp.evlscript.org;
+
+  location /media  {
+    alias /home/hainp/Workspaces/Development/zimbra-authentication-service/rp/rp/media;
+  }
+
+  location /static {
+    alias /home/hainp/Workspaces/Development/zimbra-authentication-service/rp/rp/static;
+  }
+
+  location / {
+    include /etc/nginx/uwsgi_params;
+    uwsgi_pass rp;
+  }
+}
