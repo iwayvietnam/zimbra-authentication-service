@@ -141,7 +141,7 @@ BROWSERID_REQUEST_ARGS = {
     'siteName': 'Zimbra Authentication Service'
 }
 
-SITE_URL = 'http://zimbra.org'
+SITE_URL = 'http://rp.evlscript.org'
 
 # BROWSERID_VERIFICATION_URL = 'http://localhost:10000'
 
