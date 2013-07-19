@@ -70,7 +70,33 @@ function startAuthenticating() {
           $("div.error").text("Yikes, that password looks wrong. Try again.");
         }
       });
+    });
+  });
+}
 
+function normalSigninPage() {
+  $("form").submit(function(e) {
+    e.preventDefault();
+    var user = $.trim($("form input[name='user']").val());
+    var pass = $.trim($("form input[name='pass']").val());
+
+    if (user.length <= 0 || pass.length <= 0) {
+      $("div.error").text("Tên đăng nhập và mật khẩu không được để trống.");
+      return;
+    }
+
+    $.ajax({
+      url: '/api/signin',
+      type: 'POST',
+      data: { user: user, pass: pass },
+      header: {"Content-Type": "application/json"},
+      success: function() {
+        $("div.error").text("Đã đăng nhập thành công.");
+        $("form").hide();
+      },
+      error: function() {
+        $("div.error").text("Tên đăng nhập và mật khẩu không khớp.");
+      }
     });
   });
 }
