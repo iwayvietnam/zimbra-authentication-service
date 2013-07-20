@@ -10,6 +10,7 @@ Relying Party
   * [django](http://www.djangoproject.com) 1.4
   * [Requests](http://python-requests.org)
   * [django-browserid](http://django-browserid.readthedocs.org/en/v0.8/)
+  * [South](http://south.aeracode.org/)
 
 ## TODO:
   * Chuyển hướng người dùng tới Zimbra.
