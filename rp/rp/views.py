@@ -9,6 +9,7 @@ from time import time
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 
+from models import Domain
 
 
 zimbra_url = "https://iway.dyndns.org:8001"
@@ -21,17 +22,20 @@ def status(request):
 
     if request.user.email:
         email = request.user.email
+        domain_name = email.split('@')[1]
 
-        # domain_key should be obtained dynamically
-        domain_key = "6b445ab7b53c432eaf1f7e00e82b68953688816ccb895f035f66f69fc206b3d2"
-        
-        url = generate(email, domain_key)
-        
-        request.session['url'] = url
-        request.session['email'] = email
-        
-        return HttpResponseRedirect(url)
-        
+        try:
+            domain = Domain.objects.get(name=domain_name)
+            if domain:
+                url = generate(email, str(domain.key))
+                request.session['email'] = email
+                return HttpResponseRedirect(url)
+            else:
+                return HttpResponseRedirect('/')
+        except Domain.DoesNotExist:
+            request.session.flush()
+            return HttpResponseRedirect('/?bid_login_failed=1')
+
     return HttpResponseRedirect('/')
 
 
