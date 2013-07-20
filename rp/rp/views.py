@@ -43,4 +43,4 @@ def generate(email, domain_key):
     timestamp = int(time()*1000)
     acct = email
     pak = hmac.new(domain_key, '%s|name|0|%s'%(acct, timestamp), hashlib.sha1).hexdigest()
-    return "%s?account=%s&expires=0&timestamp=%s&preauth=%s"%(preauth_url, acct, timestamp, pak)    
+    return "%s?account=%s&expires=0&timestamp=%s&preauth=%s"%(preauth_url, acct, timestamp, pak)
