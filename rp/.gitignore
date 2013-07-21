@@ -3,4 +3,5 @@ include/
 lib/
 local/
 zauth
+domain
 *.pyc
