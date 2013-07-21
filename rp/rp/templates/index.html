@@ -7,12 +7,14 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/persona-buttons.css" %}" />
     <style type="text/css">
       .browserid_login{width:300px;}
+      .authentication{display:none;}
       .authentication a{margin-bottom:40px;}
     </style>
   </head>
   <body>
     {% browserid_info %}
     <header>
+      <div class="notification">Đang chờ xử lý ...</div>
       <div class="authentication">
         {% if user.is_authenticated %}
           {% browserid_logout text='Đăng xuất khỏi Zimbra' link_class='persona-button'%}

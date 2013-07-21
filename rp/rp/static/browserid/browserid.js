@@ -70,6 +70,9 @@
 
         if ($browseridInfo.data('userEmail')) {
             window.location = $('.browserid-login').data('next');
+        } else {
+            $(".notification").hide();
+            $(".authentication").css('display', 'block');
         }
     });
 })(jQuery);
