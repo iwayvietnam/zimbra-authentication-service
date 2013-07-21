@@ -17,21 +17,14 @@ preauth_url = zimbra_url + "/service/preauth"
 mail_url = zimbra_url + "/mail"
 
 def status(request):
-    if request.session.get('email'):
-        return HttpResponseRedirect(mail_url)
-
-    if request.user.email:
-        email = request.user.email
+    email = request.session.get('email') or request.user.email
+    if email:
         domain_name = email.split('@')[1]
-
         try:
             domain = Domain.objects.get(name=domain_name)
-            if domain:
-                url = generate(email, str(domain.key))
-                request.session['email'] = email
-                return HttpResponseRedirect(url)
-            else:
-                return HttpResponseRedirect('/')
+            url = generate(email, str(domain.key))
+            request.session['email'] = email
+            return HttpResponseRedirect(url)
         except Domain.DoesNotExist:
             request.session.flush()
             return HttpResponseRedirect('/?bid_login_failed=1')
