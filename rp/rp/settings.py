@@ -155,7 +155,7 @@ BROWSERID_REQUEST_ARGS = {
 
 SITE_URL = 'http://rp.evlscript.org'
 
-# BROWSERID_VERIFICATION_URL = 'http://localhost:10000'
+BROWSERID_VERIFICATION_URL = 'http://browserid.evlscript.org/verifier'
 
 # Path to redirect to on successful login.
 LOGIN_REDIRECT_URL = '/status'
