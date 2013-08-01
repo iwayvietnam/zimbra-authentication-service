@@ -92,6 +92,7 @@ function normalSigninPage() {
       header: {"Content-Type": "application/json"},
       success: function() {
         $("div.error").text("Đã đăng nhập thành công.");
+        $(".rp-link").show();
         $("form").hide();
       },
       error: function() {
