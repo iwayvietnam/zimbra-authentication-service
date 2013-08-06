@@ -8,6 +8,7 @@
     $(function() {
         var loginRedirect = null; // Path to redirect to post-login.
         var logoutRedirect = null; // Path to redirect to post-logout.
+        var isLoggingIn = false; // For UI update
 
         var $loginForm = $('#browserid-form'); // Form used to submit login.
         var $browseridInfo = $('#browserid-info'); // Useful info from backend.
@@ -41,6 +42,7 @@
                 }
 
                 if (assertion) {
+                    isLoggingIn = true;
                     $loginForm.find('input[name="next"]').val(loginRedirect);
                     $loginForm.find('input[name="assertion"]').val(assertion);
                     $loginForm.submit();
@@ -58,14 +60,17 @@
                         window.location = currentLogoutUrl;
                     }
                 }
+            },
+            onready: function() {
+                if (!$browseridInfo.data('userEmail') && !isLoggingIn) {
+                  $(".notification").hide();
+                  $(".authentication").css('display', 'block');
+                }
             }
         });
 
         if ($browseridInfo.data('userEmail')) {
             window.location = $('.browserid-login').data('next');
-        } else {
-            $(".notification").hide();
-            $(".authentication").css('display', 'block');
         }
     });
 })(jQuery);
