@@ -6,7 +6,6 @@
     'use strict';
 
     $(function() {
-        // State? Ewwwwww.
         var loginRedirect = null; // Path to redirect to post-login.
         var logoutRedirect = null; // Path to redirect to post-logout.
 
@@ -54,12 +53,6 @@
                     logoutRedirect = null;
                     window.location = currentLogoutUrl;
                 } else {
-                    // Sometimes you can get caught in a loop where BrowserID
-                    // keeps trying to log you out as soon as watch is called,
-                    // and fails since the logout URL hasn't been set yet.
-                    // Here we just find the first logout button and use that
-                    // URL; if this breaks your site, you'll just need custom
-                    // JavaScript instead, sorry. :(
                     currentLogoutUrl = $('.browserid-logout').attr('href');
                     if (currentLogoutUrl) {
                         window.location = currentLogoutUrl;
